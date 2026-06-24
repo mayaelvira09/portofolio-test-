@@ -1,81 +1,112 @@
 <template>
-  <section id="about" class="about-section py-5" data-aos="fade-up" data-aos-duration="1000">
+  <section id="about" class="about-section py-5" data-aos="fade-up">
     <div class="container">
-      <!-- Section Header -->
       <div class="text-center mb-5">
         <h2 class="section-title">Tentang Saya</h2>
-        <p class="section-subtitle">Kenali saya lebih dekat, latar belakang pendidikan, serta impian karier saya dalam bidang pengembangan website.</p>
+        <p class="section-subtitle">
+          Mengenal lebih dekat latar belakang, kemampuan, dan tujuan karier saya.
+        </p>
       </div>
 
-      <div class="row g-4 align-items-stretch">
-        <!-- Left: Biography and Vision -->
-        <div class="col-lg-7 d-flex flex-column justify-content-between">
-          <div class="card-custom h-100 mb-4 p-4 d-flex flex-column justify-content-center">
-            <h3 class="h4 text-accent mb-3 d-flex align-items-center gap-2">
-              <i class="bi bi-person-lines-fill"></i> Biografi Singkat
+      <div class="row g-4">
+        <!-- KIRI -->
+        <div class="col-lg-7">
+          <div class="card-custom p-4 h-100">
+            <h3 class="h4 mb-4">
+              <i class="bi bi-person-lines-fill me-2 text-primary"></i>
+              Biografi Singkat
             </h3>
-            <p class="lead text-dark fs-6 mb-4">
-              Halo! Saya Maya Elvira Sutanto, siswi SMKN 1 Denpasar jurusan Rekayasa Perangkat Lunak yang memiliki ketertarikan mendalam di bidang Web Development. Saya senang mempelajari teknologi baru dan terus mengembangkan kemampuan dalam membangun website modern, responsif, dan mudah digunakan.
+
+            <p class="lead fs-6 text-dark">
+              Halo, saya Maya Elvira Sutanto, seorang Front-End Web Developer
+              yang memiliki minat besar dalam pengembangan website modern,
+              responsif, dan user-friendly. Saya memiliki kemampuan dalam
+              menggunakan HTML, CSS, JavaScript, PHP, Laravel, dan MySQL untuk
+              membangun solusi digital yang efektif dan mudah digunakan.
             </p>
-            <p class="text-secondary mb-4">
-              Saat ini saya siap untuk terjun ke dunia industri teknologi secara profesional untuk berkontribusi secara aktif dan terus mengasah skill sebagai Front-End Web Developer. Saya siap menghadirkan solusi digital kreatif dengan dedikasi tinggi serta etos kerja yang disiplin.
+
+            <p class="text-secondary">
+              Saya senang mempelajari teknologi baru, mengembangkan kemampuan
+              problem solving, serta terus meningkatkan keterampilan untuk
+              menghasilkan website yang berkualitas. Saya juga terbiasa bekerja
+              secara mandiri maupun dalam tim dan selalu berusaha memberikan
+              hasil terbaik dalam setiap proyek yang dikerjakan.
             </p>
-            
-            <!-- Vision Banner -->
-            <div class="p-3 bg-light rounded-4 border-start border-primary border-4 mt-2">
-              <div class="d-flex gap-3 align-items-start">
-                <i class="bi bi-chat-quote-fill text-primary fs-3 flex-shrink-0"></i>
-                <div>
-                  <h5 class="fw-bold mb-1 fs-6">Komitmen Belajar</h5>
-                  <p class="small text-secondary mb-0">"Proses belajar tidak pernah berhenti. Setiap tantangan baru adalah kesempatan untuk menjadi developer yang lebih andal."</p>
-                </div>
-              </div>
+
+            <div
+              class="mt-4 p-4 rounded-4 bg-light border-start border-4 border-primary"
+            >
+              <h5 class="fw-bold mb-2">
+                <i class="bi bi-lightbulb-fill text-primary me-2"></i>
+                Motivasi
+              </h5>
+
+              <p class="mb-0 text-secondary">
+                "Setiap proyek adalah kesempatan untuk belajar, berkembang, dan
+                menciptakan solusi digital yang memberikan manfaat bagi banyak
+                orang."
+              </p>
             </div>
           </div>
         </div>
 
-        <!-- Right: Glassmorphism Information Cards -->
-        <div class="col-lg-5 d-flex flex-column gap-4">
-          <!-- Biodata Card -->
-          <div class="card-custom glass-card p-4 flex-grow-1">
-            <h3 class="h5 text-accent mb-4 d-flex align-items-center gap-2">
-              <i class="bi bi-card-list"></i> Informasi Diri
-            </h3>
-            <div class="d-flex flex-column gap-3">
-              <div class="d-flex justify-content-between border-bottom pb-2">
-                <span class="text-secondary">Nama Lengkap</span>
-                <span class="fw-bold text-dark text-end">Maya Elvira Sutanto</span>
+        <!-- KANAN -->
+        <div class="col-lg-5">
+          <div class="card-custom p-4 mb-4">
+            <div class="text-center">
+              <div
+                class="mx-auto rounded-circle bg-primary bg-opacity-10 d-flex align-items-center justify-content-center mb-3"
+                style="width:90px;height:90px;"
+              >
+                <i class="bi bi-person-workspace text-primary fs-1"></i>
               </div>
-              <div class="d-flex justify-content-between border-bottom pb-2">
-                <span class="text-secondary">Sekolah</span>
-                <span class="fw-semibold text-dark text-end">SMKN 1 Denpasar</span>
-              </div>
-              <div class="d-flex justify-content-between border-bottom pb-2">
-                <span class="text-secondary">Jurusan</span>
-                <span class="fw-semibold text-dark text-end">Rekayasa Perangkat Lunak</span>
-              </div>
-              <div class="d-flex justify-content-between border-bottom pb-2">
-                <span class="text-secondary">Status Akademik</span>
-                <span class="badge bg-primary text-white py-1.5 px-2">Siswi Kelas XII</span>
-              </div>
-              <div class="d-flex justify-content-between border-bottom pb-2">
+
+              <h4 class="fw-bold mb-1">
+                Maya Elvira Sutanto
+              </h4>
+
+              <p class="text-primary fw-semibold mb-4">
+                Front-End Web Developer
+              </p>
+            </div>
+
+            <div class="border-top pt-3">
+              <div class="d-flex justify-content-between mb-3">
                 <span class="text-secondary">Domisili</span>
-                <span class="fw-semibold text-dark text-end">Badung, Bali</span>
+                <span class="fw-semibold">Badung, Bali</span>
               </div>
-              <div class="d-flex justify-content-between pb-1">
-                <span class="text-secondary">Minat</span>
-                <span class="text-primary fw-bold text-end">Web Development</span>
+
+              <div class="d-flex justify-content-between mb-3">
+                <span class="text-secondary">Pendidikan</span>
+                <span class="fw-semibold">Rekayasa Perangkat Lunak</span>
+              </div>
+
+              <div class="d-flex justify-content-between mb-3">
+                <span class="text-secondary">Bidang</span>
+                <span class="fw-semibold text-primary">
+                  Web Development
+                </span>
+              </div>
+
+              <div class="d-flex justify-content-between">
+                <span class="text-secondary">Status</span>
+                <span class="badge bg-success">
+                  Open To Work
+                </span>
               </div>
             </div>
           </div>
 
-          <!-- Career Goal Card -->
-          <div class="card-custom glass-card p-4">
-            <h3 class="h5 text-accent mb-3 d-flex align-items-center gap-2">
-              <i class="bi bi-compass"></i> Tujuan Karier
+          <div class="card-custom p-4">
+            <h3 class="h5 mb-3">
+              <i class="bi bi-compass me-2 text-primary"></i>
+              Tujuan Karier
             </h3>
-            <p class="mb-0 text-dark small">
-              Menjadi seorang <strong>Front-End Web Developer</strong> yang mampu membangun website modern, responsif, dan memberikan pengalaman pengguna yang baik melalui proses belajar yang konsisten.
+
+            <p class="mb-0 text-secondary">
+              Menjadi Front-End Web Developer profesional yang mampu
+              menciptakan website modern, responsif, dan memberikan pengalaman
+              pengguna yang optimal melalui teknologi web terkini.
             </p>
           </div>
         </div>
@@ -85,12 +116,27 @@
 </template>
 
 <script setup>
-// Purely functional component, data driven and static
+// About Section
 </script>
 
 <style scoped>
 .about-section {
-  background-color: var(--color-white);
-  border-bottom: 1px solid rgba(91, 157, 255, 0.05);
+  background: #ffffff;
+}
+
+.section-title {
+  font-weight: 700;
+}
+
+.section-subtitle {
+  color: #6c757d;
+}
+
+.card-custom {
+  background: #fff;
+  border-radius: 20px;
+  padding: 1.5rem;
+  border: 1px solid #eef2f7;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 </style>

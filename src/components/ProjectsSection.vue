@@ -1,0 +1,545 @@
+<template>
+  <section id="projects" class="projects-section py-5" data-aos="fade-up" data-aos-duration="1000">
+    <div class="container">
+      <!-- Section Header -->
+      <div class="text-center mb-5">
+        <h2 class="section-title">My Projects</h2>
+        <p class="section-subtitle">Beberapa project yang telah saya kerjakan selama proses belajar pengembangan website dan pengembangan aplikasi.</p>
+      </div>
+
+      <!-- Featured Project (Larger Card) -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="card-custom hover-card featured-project-card glass-card">
+            <div class="row align-items-center g-4">
+              <!-- Preview Column -->
+              <div class="col-lg-6">
+                <div class="project-img-wrapper m-0">
+                  <!-- Load local image if available, else fall back to abstract gradient -->
+                  <img 
+                    v-if="!featuredProject.imageError" 
+                    :src="featuredProject.image" 
+                    @error="handleImageError(featuredProject)" 
+                    alt="Rare Angon" 
+                    class="project-img-element"
+                  />
+                  <div v-else class="project-placeholder bg-featured-grad">
+                    <i class="bi bi-controller animate-controller"></i>
+                    <span class="fw-bold mt-2">Interactive Game Preview</span>
+                  </div>
+                </div>
+              </div>
+              <!-- Details Column -->
+              <div class="col-lg-6">
+                <div class="ps-lg-3">
+                  <span class="badge bg-primary text-white mb-2 py-1.5 px-3 rounded-pill fw-bold">
+                    <i class="bi bi-star-fill me-1 text-warning"></i> Featured Project
+                  </span>
+                  <h3 class="h3 fw-bold text-dark mb-3">{{ featuredProject.title }}</h3>
+                  <p class="text-secondary mb-4">{{ featuredProject.description }}</p>
+                  
+                  <div class="mb-4">
+                    <h5 class="h6 fw-bold text-dark mb-2">Teknologi:</h5>
+                    <div class="d-flex flex-wrap gap-2">
+                      <span v-for="tech in featuredProject.technologies" :key="tech" class="tech-badge">
+                        {{ tech }}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <div class="d-flex gap-3">
+                    <button @click="openModal(featuredProject)" class="btn-custom btn-primary-custom">
+                      <i class="bi bi-eye-fill"></i> Lihat Detail
+                    </button>
+                   
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Projects Grid (Other Projects) -->
+      <div class="row g-4">
+        <div 
+          v-for="project in otherProjects" 
+          :key="project.title" 
+          class="col-12 col-md-6 col-lg-4"
+        >
+          <div class="card-custom hover-card project-card glass-card">
+            <!-- Project Image Placeholder -->
+            <div class="project-img-wrapper">
+              <img 
+                v-if="!project.imageError" 
+                :src="project.image" 
+                @error="handleImageError(project)" 
+                :alt="project.title" 
+                class="project-img-element"
+              />
+              <div v-else :class="['project-placeholder', project.gradientClass]">
+                <i :class="project.icon"></i>
+                <span class="small fw-semibold mt-1">Project Mockup</span>
+              </div>
+            </div>
+            
+            <!-- Project Details -->
+            <h4 class="h5 fw-bold text-dark mb-2">{{ project.title }}</h4>
+            <p class="text-secondary small flex-grow-1 mb-3">{{ project.description }}</p>
+            
+            <div class="mb-3">
+              <div class="d-flex flex-wrap gap-1-5">
+                <span v-for="tech in project.technologies" :key="tech" class="tech-badge me-1 mb-1">
+                  {{ tech }}
+                </span>
+              </div>
+            </div>
+            
+            <div class="d-flex gap-2 mt-auto">
+              <button @click="openModal(project)" class="btn-custom btn-primary-custom btn-sm flex-fill justify-content-center py-2 fs-7">
+                <i class="bi bi-eye"></i> Detail
+              </button>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- =======================
+     PROJECT DETAIL MODAL
+======================== -->
+<div
+  class="custom-modal-overlay"
+  v-if="showModal"
+  @click.self="closeModal"
+>
+  <div class="custom-modal-content">
+
+    <!-- Tombol Close -->
+    <button
+      class="btn-close-custom"
+      @click="closeModal"
+    >
+      <i class="bi bi-x-lg"></i>
+    </button>
+
+    <!-- Gambar -->
+    <div class="modal-image">
+
+      <img
+        v-if="!currentProject.imageError"
+        :src="currentProject.image"
+        @error="handleModalImageError"
+        :alt="currentProject.title"
+        class="modal-project-img"
+      />
+
+      <div
+        v-else
+        :class="['project-placeholder', currentProject.gradientClass || 'bg-featured-grad']"
+      >
+        <i :class="currentProject.icon || 'bi bi-folder-fill'"></i>
+      </div>
+
+    </div>
+
+    <!-- Isi -->
+    <div class="modal-body-custom">
+
+      <h2 class="modal-title">
+        {{ currentProject.title }}
+      </h2>
+
+      <p class="modal-description">
+        {{ currentProject.detailedDescription || currentProject.description }}
+      </p>
+
+      <h6 class="tech-title">
+        Teknologi yang Digunakan
+      </h6>
+
+      <div class="modal-tech">
+
+        <span
+          v-for="tech in currentProject.technologies"
+          :key="tech"
+          class="tech-badge"
+        >
+          {{ tech }}
+        </span>
+
+      </div>
+
+      <div class="modal-footer-custom">
+
+        <a
+          v-if="currentProject.vercelLink && currentProject.vercelLink !== '#'"
+          :href="currentProject.vercelLink"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-custom btn-primary-custom"
+        >
+          <i class="bi bi-box-arrow-up-right"></i>
+          Kunjungi Website
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+    </div>
+  </section>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const showModal = ref(false)
+const currentProject = ref(null)
+
+const featuredProject = ref({
+  title: 'Rare Angon — Game Tradisional Interaktif',
+  description: 'Kami terinspirasi dari filosofi "Rare Angon", sosok pelindung tradisi bermain layang-layang. Di era sekarang generasi muda mulai melupakan permainan tradisional karena gempuran game modern. Kami merancang tradisi layangan Bali ke dalam format game modern (Endless Runner) yang digabungkan dengan teknologi kecerdasan buatan (AI).',
+  detailedDescription: 'Rare Angon merupakan hasil kolaborasi pengembangan game endless runner bertema budaya lokal Bali, khususnya pelestarian tradisi bermain layang-layang. Proyek ini mengintegrasikan teknologi Computer Vision melalui pustaka MediaPipe dan OpenCV untuk mendeteksi gestur tangan secara real-time (AI Hand Gesture). Pemain dapat menerbangkan, mengarahkan, dan menghindari rintangan layang-layang cukup dengan menggerakkan tangan di depan kamera perangkat tanpa memerlukan mouse maupun keyboard, menciptakan interaksi yang imersif dan bernilai edukasi budaya.',
+  technologies: ['js', 'HTML', 'CSS', 'crud', 'Mediapipe', 'computerVision', 'AI HAND GESTURE'],
+  icon: 'bi-controller',
+  image: 'src/assets/rareangon.jpeg',
+  imageError: false,
+  vercelLink: 'https://rare-angon-sky-runner-main.vercel.app',
+  
+})
+
+const otherProjects = ref([
+  {
+    title: 'GlowHair',
+    description: 'Website e-commerce yang menjual berbagai jenis alat catokan rambut yang memiliki fitur katalog produk, pencarian, detail produk, keranjang belanja, serta tampilan yang responsif.',
+    detailedDescription: 'GlowHair adalah platform toko online catok rambut modern yang dirancang untuk memberikan kenyamanan transaksi berbelanja produk kecantikan penata rambut. Dibangun menggunakan Laravel MVC, website ini dilengkapi dengan katalog filter pencarian dinamis, detail produk lengkap, kelola keranjang belanja interaktif, form checkout, serta panel administratif dasar untuk kelola data inventori produk.',
+    technologies: ['Laravel Framework', 'PHP', 'HTML5', 'CSS3', 'Bootstrap 4', 'JavaScript', 'MySQL Database', 'Git & GitHub'],
+    icon: 'bi bi-bag-heart-fill',
+    image: 'src/assets/toko_online.jpeg',
+    imageError: false, 
+    gradientClass: 'bg-grad-1',
+    vercelLink: '#',
+    
+  },
+  {
+    title: 'Tefa - SMKN 1 DENPASAR',
+    description: 'Teaching factory SMKN 1 DENPASAR ini merupakan website jual beli barang atau jasa dari SMK Negeri 1 Denpasar, kami menyalurkan layanan ini untuk masyarakat umum.',
+    detailedDescription: 'Teaching Factory (Tefa) SMK Negeri 1 Denpasar merupakan sebuah sistem platform layanan e-marketplace lokal sekolah untuk memfasilitasi pemasaran produk kreativitas siswa dan pemesanan jasa kejuruan (seperti perbaikan komputer, servis jaringan, perakitan, dan pembuatan web) oleh masyarakat umum. Dikembangkan dengan Laravel untuk memastikan sistem database transaksi aman, rapi, dan mudah dioperasikan.',
+    technologies: ['Laravel', 'PHP', 'HTML', 'CSS', 'Bootstrap', 'JavaScript'],
+    icon: 'bi bi-box-seam-fill',
+    image: 'src/assets/tefa.jpeg',
+    imageError: false,
+    gradientClass: 'bg-grad-2',
+    vercelLink: '#',
+    githubLink: 'https://github.com/mayaelvira09'
+  },
+  {
+    title: 'Website Biodata',
+    description: 'Website profil pribadi yang menampilkan informasi diri, pendidikan, kemampuan, serta kontak dengan desain modern dan responsif.',
+    detailedDescription: 'Website biodata interaktif "Cerita Liburan Maya" yang berfungsi sebagai portofolio sederhana sekaligus melatih visualisasi layout CSS. Menampilkan biografi pribadi, timeline pendidikan, hobi, catatan cerita liburan interaktif, kemampuan teknis, serta formulir kontak responsif yang dikemas secara bersih dan estetik.',
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    icon: 'bi bi-person-badge-fill',
+    image: 'src/assets/biodata.jpeg',
+    imageError: false,
+    gradientClass: 'bg-grad-4',
+    vercelLink: 'https://ceritakkpw.vercel.app/',
+    githubLink: 'https://github.com/mayaelvira09',
+  }
+])
+
+const handleImageError = (project) => {
+  if (project.image.endsWith('.jpg')) {
+    project.image = project.image.replace('.jpeg', '.png')
+  } else {
+    project.imageError = true
+  }
+}
+
+const handleModalImageError = () => {
+  if (currentProject.value) {
+    if (currentProject.value.image.endsWith('.jpg')) {
+      currentProject.value.image = currentProject.value.image.replace('.jpg', '.png')
+    } else {
+      currentProject.value.imageError = true
+    }
+  }
+}
+
+const openModal = (project) => {
+  currentProject.value = project
+  showModal.value = true
+}
+
+const closeModal = () => {
+  showModal.value = false
+  currentProject.value = null
+}
+</script>
+
+```css
+<style scoped>
+.projects-section {
+  background: var(--color-bg);
+  padding: 90px 0;
+}
+
+/* =========================
+   Section
+========================= */
+
+.section-title {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.section-subtitle {
+  max-width: 700px;
+  margin: auto;
+  color: #6c757d;
+  line-height: 1.8;
+}
+
+.fs-7 {
+  font-size: .82rem;
+}
+
+.gap-1-5 {
+  gap: .4rem;
+}
+
+/* =========================
+   Card
+========================= */
+
+.glass-card {
+  background: rgba(255,255,255,.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,.35);
+}
+
+.card-custom {
+  padding: 28px;
+  transition: .35s ease;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0,0,0,.06);
+}
+
+.hover-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0,0,0,.12);
+}
+
+/* =========================
+   Image
+========================= */
+
+.project-img-wrapper {
+  width: 100%;
+  height: 230px;
+  border-radius: 18px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.project-img-element,
+.modal-project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: .4s;
+}
+
+.project-card:hover .project-img-element,
+.featured-project-card:hover .project-img-element {
+  transform: scale(1.08);
+}
+
+.project-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.project-placeholder i {
+  font-size: 4rem;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   Gradient
+========================= */
+
+.bg-featured-grad{
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+}
+
+.bg-grad-1{
+background:linear-gradient(135deg,#0ea5e9,#3b82f6);
+}
+
+.bg-grad-2{
+background:linear-gradient(135deg,#22c55e,#0ea5e9);
+}
+
+.bg-grad-4{
+background:linear-gradient(135deg,#9333ea,#2563eb);
+}
+
+/* =========================
+   Badge
+========================= */
+
+.tech-badge{
+padding:6px 14px;
+background:#eef4ff;
+color:#2563eb;
+border-radius:50px;
+font-size:.78rem;
+font-weight:600;
+}
+
+/* =========================
+   Button
+========================= */
+
+.btn-custom{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:12px 22px;
+border:none;
+border-radius:12px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+text-decoration:none;
+}
+
+.btn-primary-custom{
+background:#2563eb;
+color:white;
+}
+
+.btn-primary-custom:hover{
+background:#1d4ed8;
+transform:translateY(-2px);
+}
+
+.btn-sm{
+padding:9px 16px;
+}
+
+/* =========================
+   Featured Animation
+========================= */
+
+.animate-controller{
+animation:float 3s ease-in-out infinite alternate;
+}
+
+@keyframes float{
+0%{
+transform:translateY(0);
+}
+100%{
+transform:translateY(-10px);
+}
+}
+
+/* =========================
+   Modal
+========================= */
+
+.custom-modal-overlay{
+position:fixed;
+inset:0;
+background:rgba(15,23,42,.55);
+backdrop-filter:blur(8px);
+display:flex;
+justify-content:center;
+align-items:center;
+padding:20px;
+z-index:9999;
+animation:fade .25s;
+}
+
+.custom-modal-content{
+width:100%;
+max-width:700px;
+border-radius:22px;
+padding:30px;
+background:white;
+box-shadow:0 20px 60px rgba(0,0,0,.25);
+animation:popup .35s ease;
+max-height:90vh;
+overflow-y:auto;
+}
+
+.project-modal-body{
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.btn-close{
+font-size:1.2rem;
+}
+
+@keyframes popup{
+from{
+opacity:0;
+transform:translateY(20px) scale(.94);
+}
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+}
+
+@keyframes fade{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media(max-width:768px){
+
+.section-title{
+font-size:2rem;
+}
+
+.card-custom{
+padding:20px;
+}
+
+.project-img-wrapper{
+height:190px;
+}
+
+.custom-modal-content{
+padding:22px;
+}
+
+.project-placeholder i{
+font-size:3rem;
+}
+
+}
+</style>
+```

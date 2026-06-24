@@ -1,17 +1,24 @@
-<style scoped>
-.home-view {
-    padding: 20px;
-}
-</style>
-
 <template>
-    <div class="home-view">
-        <h1>HomeView</h1>
-    </div>
+  <div class="home-view">
+    <!-- Hero Banner Section -->
+    <HeroSection />
+
+    <!-- Statistics Counters Section -->
+    <StatisticsSection />
+
+    <!-- Why Choose Me Highlights Section -->
+    <WhyChooseMeSection />
+  </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-
-const count = ref(0)
+import HeroSection from '../components/HeroSection.vue'
+import StatisticsSection from '../components/StatisticsSection.vue'
+import WhyChooseMeSection from '../components/WhyChooseMeSection.vue'
 </script>
+
+<style scoped>
+.home-view {
+  min-height: calc(100vh - 72px);
+}
+</style>

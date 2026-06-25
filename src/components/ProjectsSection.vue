@@ -114,17 +114,16 @@
   @click.self="closeModal"
 >
   <div class="custom-modal-content">
-
-    <!-- Tombol Close -->
-    <button
-      class="btn-close-custom"
-      @click="closeModal"
-    >
-      <i class="bi bi-x-lg"></i>
-    </button>
+<button
+  type="button"
+  class="btn-close-custom"
+  @click="closeModal"
+>
+  <i class="bi bi-x-lg"></i>
+</button>
 
     <!-- Gambar -->
-    <div class="modal-image">
+    <div class="modal-image shadow-sm">
 
       <img
         v-if="!currentProject.imageError"
@@ -267,6 +266,9 @@ const handleModalImageError = () => {
     }
   }
 }
+const openModal = (project) => {
+  currentProject.value = project
+  showModal.value = true
 
 const openModal = (project) => {
   currentProject.value = project
@@ -277,9 +279,17 @@ const closeModal = () => {
   showModal.value = false
   currentProject.value = null
 }
+}
+
+const closeModal = () => {
+  showModal.value = false
+  currentProject.value = null
+
+ 
+}
 </script>
 
-```css
+
 <style scoped>
 .projects-section {
   background: var(--color-bg);
@@ -374,9 +384,6 @@ const closeModal = () => {
   margin-bottom: 12px;
 }
 
-/* =========================
-   Gradient
-========================= */
 
 .bg-featured-grad{
 background:linear-gradient(135deg,#2563eb,#7c3aed);
@@ -455,56 +462,6 @@ transform:translateY(-10px);
 }
 }
 
-/* =========================
-   Modal
-========================= */
-
-.custom-modal-overlay{
-position:fixed;
-inset:0;
-background:rgba(15,23,42,.55);
-backdrop-filter:blur(8px);
-display:flex;
-justify-content:center;
-align-items:center;
-padding:20px;
-z-index:9999;
-animation:fade .25s;
-}
-
-.custom-modal-content{
-width:100%;
-max-width:700px;
-border-radius:22px;
-padding:30px;
-background:white;
-box-shadow:0 20px 60px rgba(0,0,0,.25);
-animation:popup .35s ease;
-max-height:90vh;
-overflow-y:auto;
-}
-
-.project-modal-body{
-display:flex;
-flex-direction:column;
-gap:18px;
-}
-
-.btn-close{
-font-size:1.2rem;
-}
-
-@keyframes popup{
-from{
-opacity:0;
-transform:translateY(20px) scale(.94);
-}
-to{
-opacity:1;
-transform:translateY(0) scale(1);
-}
-}
-
 @keyframes fade{
 from{
 opacity:0;
@@ -541,5 +498,152 @@ font-size:3rem;
 }
 
 }
+
+/* =========================
+   MODAL MODERN
+========================= */
+
+.custom-modal-content {
+  position: relative;
+
+  width: 100%;
+  max-width: 850px;
+
+  background: #fff;
+  border-radius: 28px;
+
+  padding: 0;
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  box-shadow: 0 25px 70px rgba(0,0,0,.25);
+
+  scrollbar-width: thin;
+}
+
+.custom-modal-overlay{
+  position: fixed;
+  inset: 0;
+
+  background: rgba(15,23,42,.6);
+  backdrop-filter: blur(8px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  z-index: 9999;
+}
+.modal-image {
+  width: 100%;
+  max-height: 210px;
+  overflow: hidden;
+}
+
+.modal-project-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.modal-project-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CLOSE BUTTON */
+
+.btn-close-custom {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 45px;
+  height: 45px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 5px 15px rgba(0,0,0,.15);
+  z-index: 10;
+  transition: .3s;
+}
+
+.btn-close-custom:hover {
+  transform: rotate(90deg);
+}
+
+/* BODY */
+
+.modal-body-custom {
+  padding: 35px;
+}
+
+.modal-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 18px;
+  line-height: 1.3;
+}
+
+.modal-description {
+  color: #64748b;
+  line-height: 1.9;
+  margin-bottom: 28px;
+}
+
+/* TECH */
+
+.tech-title {
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 15px;
+}
+
+.modal-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+/* FOOTER */
+
+.modal-footer-custom {
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* SCROLL */
+
+.custom-modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-modal-content::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+
+/* MOBILE */
+
+@media (max-width:768px){
+
+  .modal-image{
+    height:220px;
+  }
+
+  .modal-body-custom{
+    padding:24px;
+  }
+
+  .modal-title{
+    font-size:1.5rem;
+  }
+
+}
 </style>
-```

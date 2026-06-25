@@ -13,7 +13,7 @@
           </h3>
           
           <p class="lead mb-4">
-           Halo, saya Maya.
+           Halo,
 Saya adalah seorang Web Developer yang berdedikasi untuk menciptakan pengalaman web yang interaktif dan optimal. Selalu adaptif dengan teknologi terbaru, saya siap berkontribusi dalam tim dan membawa dampak positif bagi proyek Anda.
           </p>
           

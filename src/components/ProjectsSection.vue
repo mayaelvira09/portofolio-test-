@@ -7,58 +7,7 @@
         <p class="section-subtitle">Beberapa project yang telah saya kerjakan selama proses belajar pengembangan website dan pengembangan aplikasi.</p>
       </div>
 
-      <!-- Featured Project (Larger Card) -->
-      <div class="row mb-5">
-        <div class="col-12">
-          <div class="card-custom hover-card featured-project-card glass-card">
-            <div class="row align-items-center g-4">
-              <!-- Preview Column -->
-              <div class="col-lg-6">
-                <div class="project-img-wrapper m-0">
-                  <!-- Load local image if available, else fall back to abstract gradient -->
-                  <img 
-                    v-if="!featuredProject.imageError" 
-                    :src="featuredProject.image" 
-                    @error="handleImageError(featuredProject)" 
-                    alt="Rare Angon" 
-                    class="project-img-element"
-                  />
-                  <div v-else class="project-placeholder bg-featured-grad">
-                    <i class="bi bi-controller animate-controller"></i>
-                    <span class="fw-bold mt-2">Interactive Game Preview</span>
-                  </div>
-                </div>
-              </div>
-              <!-- Details Column -->
-              <div class="col-lg-6">
-                <div class="ps-lg-3">
-                  <span class="badge bg-primary text-white mb-2 py-1.5 px-3 rounded-pill fw-bold">
-                    <i class="bi bi-star-fill me-1 text-warning"></i> Featured Project
-                  </span>
-                  <h3 class="h3 fw-bold text-dark mb-3">{{ featuredProject.title }}</h3>
-                  <p class="text-secondary mb-4">{{ featuredProject.description }}</p>
-                  
-                  <div class="mb-4">
-                    <h5 class="h6 fw-bold text-dark mb-2">Teknologi:</h5>
-                    <div class="d-flex flex-wrap gap-2">
-                      <span v-for="tech in featuredProject.technologies" :key="tech" class="tech-badge">
-                        {{ tech }}
-                      </span>
-                    </div>
-                  </div>
-                  
-                  <div class="d-flex gap-3">
-                    <button @click="openModal(featuredProject)" class="btn-custom btn-primary-custom">
-                      <i class="bi bi-eye-fill"></i> Lihat Detail
-                    </button>
-                   
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       <!-- Projects Grid (Other Projects) -->
       <div class="row g-4">
@@ -198,17 +147,7 @@ import { ref } from 'vue'
 const showModal = ref(false)
 const currentProject = ref(null)
 
-const featuredProject = ref({
-  title: 'Rare Angon — Game Tradisional Interaktif',
-  description: 'Kami terinspirasi dari filosofi "Rare Angon", sosok pelindung tradisi bermain layang-layang. Di era sekarang generasi muda mulai melupakan permainan tradisional karena gempuran game modern. Kami merancang tradisi layangan Bali ke dalam format game modern (Endless Runner) yang digabungkan dengan teknologi kecerdasan buatan (AI).',
-  detailedDescription: 'Rare Angon merupakan hasil kolaborasi pengembangan game endless runner bertema budaya lokal Bali, khususnya pelestarian tradisi bermain layang-layang. Proyek ini mengintegrasikan teknologi Computer Vision melalui pustaka MediaPipe dan OpenCV untuk mendeteksi gestur tangan secara real-time (AI Hand Gesture). Pemain dapat menerbangkan, mengarahkan, dan menghindari rintangan layang-layang cukup dengan menggerakkan tangan di depan kamera perangkat tanpa memerlukan mouse maupun keyboard, menciptakan interaksi yang imersif dan bernilai edukasi budaya.',
-  technologies: ['js', 'HTML', 'CSS', 'crud', 'Mediapipe', 'computerVision', 'AI HAND GESTURE'],
-  icon: 'bi-controller',
-  image: 'src/assets/rareangon.jpeg',
-  imageError: false,
-  vercelLink: 'https://rare-angon-sky-runner-main.vercel.app',
-  
-})
+
 
 const otherProjects = ref([
   {

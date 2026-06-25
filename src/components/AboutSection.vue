@@ -1,5 +1,5 @@
 <template>
-  <section id="about" class="about-section py-5" data-aos="fade-up">
+  <section id="about" class="about-section py-5" data-aos="fade-left">
     <div class="container">
 
       <!-- Judul -->
@@ -87,7 +87,7 @@
                 </li>
 
                 <li>
-                  <span class="badge bg-success px-3 py-2">
+                  <span class="badge bg-primary px-3 py-2">
                     Open To Work
                   </span>
                 </li>
@@ -190,6 +190,12 @@
   object-fit: cover;
   border: 4px solid #2563eb;
   flex-shrink: 0;
+  border: 4px solid transparent;
+  background:
+  linear-gradient(white, white) padding-box,
+   linear-gradient(135deg, #456dc5, #9eddf8) border-box;
+   box-shadow:
+    8px 8px 25px rgba(37, 99, 235, 0.25);
 }
 
 .profile-info h4 {

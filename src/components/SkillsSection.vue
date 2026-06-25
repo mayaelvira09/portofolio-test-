@@ -1,5 +1,5 @@
 <template>
-  <section id="skills" class="skills-section py-5" data-aos="zoom-in" data-aos-duration="1000">
+  <section id="skills" class="skills-section py-5" data-aos="fade-left" data-aos-duration="1000">
     <div class="container">
       <!-- Section Header -->
       <div class="text-center mb-5">

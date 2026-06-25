@@ -10,9 +10,6 @@
     <router-view />
   </main>
 
-  <!-- Scroll Back to Top Button -->
-  <BackToTop />
-
   <!-- Footer Section -->
   <FooterSection />
 </template>
@@ -26,7 +23,6 @@ import AOS from 'aos'
 import LoadingAnimation from './components/LoadingAnimation.vue'
 import Navbar from './components/Navbar.vue'
 import FooterSection from './components/FooterSection.vue'
-import BackToTop from './components/BackToTop.vue'
 
 const route = useRoute()
 

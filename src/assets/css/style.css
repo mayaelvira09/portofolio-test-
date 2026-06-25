@@ -217,7 +217,7 @@ section {
 }
 
 .card-custom.hover-card:hover {
-  transform: translateY(-8px);
+  transform: none;
   box-shadow: var(--shadow-hover);
   border-color: rgba(59, 130, 246, 0.2);
 }
@@ -585,7 +585,7 @@ section {
 .feature-card:hover .feature-icon-circle {
   background: var(--color-primary);
   color: var(--color-white);
-  transform: rotateY(360deg);
+  transform: rotateY(380deg);
 }
 
 /* Footer Section */

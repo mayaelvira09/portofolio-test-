@@ -271,17 +271,6 @@ const closeModal = () => {
   border: 1px solid rgba(255,255,255,.35);
 }
 
-.card-custom {
-  padding: 28px;
-  transition: .35s ease;
-  height: 100%;
-  box-shadow: 0 10px 30px rgba(0,0,0,.06);
-}
-
-.hover-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0,0,0,.12);
-}
 
 /* =========================
    Image

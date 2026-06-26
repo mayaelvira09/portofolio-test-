@@ -477,40 +477,6 @@ section {
   font-weight: 600;
 }
 
-/* Back To Top Button */
-.back-to-top {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.25rem;
-  box-shadow: var(--shadow-medium);
-  cursor: pointer;
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition-smooth);
-  z-index: 999;
-}
-
-.back-to-top.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.back-to-top:hover {
-  background-color: var(--color-accent);
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.25);
-  color: var(--color-white);
-}
 
 /* Loading Animation Screen */
 .loader-overlay {
@@ -561,32 +527,7 @@ section {
   100% { opacity: 1; }
 }
 
-/* Why Choose Me Cards */
-.feature-card {
-  padding: 35px 25px;
-  text-align: center;
-  height: 100%;
-}
 
-.feature-icon-circle {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(91, 157, 255, 0.15) 0%, rgba(59, 130, 246, 0.05) 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 2rem;
-  color: var(--color-accent);
-  margin: 0 auto 20px auto;
-  transition: var(--transition-smooth);
-}
-
-.feature-card:hover .feature-icon-circle {
-  background: var(--color-primary);
-  color: var(--color-white);
-  transform: rotateY(380deg);
-}
 
 /* Footer Section */
 .footer-section {

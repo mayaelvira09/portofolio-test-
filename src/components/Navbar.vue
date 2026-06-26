@@ -75,5 +75,5 @@ onBeforeUnmount(() => {
 </script>
 
 <style scoped>
-/* Class navigation links styling using Vue Router active links is managed in style.css */
+
 </style>

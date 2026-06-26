@@ -1,31 +1,33 @@
 <template>
-  <section id="about" class="about-section py-5" data-aos="fade-left">
+  <section id="about" class="about-section py-4 py-md-5" data-aos="fade-left">
     <div class="container">
 
-      <div class="text-center mb-5">
+      <!-- Header Section Responsif -->
+      <div class="text-center mb-4 mb-md-5">
         <h2 class="section-title">Tentang Saya</h2>
-        <p class="section-subtitle">
+        <p class="section-subtitle px-2">
           Mengenal lebih dekat latar belakang, kemampuan, dan tujuan karier saya.
         </p>
       </div>
 
       <div class="row g-4">
 
+        <!-- Sisi Kiri: Biografi -->
         <div class="col-lg-7">
           <div class="card-custom p-4 h-100">
 
-            <h3 class="h4 mb-4">
+            <h3 class="h4 mb-3 mb-md-4 text-center text-md-start">
               <i class="bi bi-person-lines-fill me-2 text-primary"></i>
               Biografi Singkat
             </h3>
 
-            <p class="text-secondary">
+            <p class="text-secondary text-justify">
               Halo, saya Maya Elvira Sutanto, seorang Front-End Web Developer
               yang memiliki minat besar dalam pengembangan website modern,
               responsif, dan user-friendly.
             </p>
 
-            <p class="text-secondary">
+            <p class="text-secondary text-justify">
               Saya memiliki pengalaman menggunakan HTML, CSS, JavaScript,
               Bootstrap, PHP, Laravel, dan MySQL untuk membangun berbagai
               proyek website. Saya senang mempelajari teknologi baru,
@@ -34,12 +36,12 @@
             </p>
 
             <div class="motivation-box mt-4">
-              <h5 class="fw-bold mb-2">
+              <h5 class="fw-bold mb-2 text-center text-md-start">
                 <i class="bi bi-lightbulb-fill text-primary me-2"></i>
                 Motivasi
               </h5>
 
-              <p class="mb-0">
+              <p class="mb-0 text-center text-md-start fst-italic">
                 "Setiap proyek adalah kesempatan untuk belajar, berkembang,
                 dan menciptakan solusi digital yang bermanfaat."
               </p>
@@ -48,8 +50,10 @@
           </div>
         </div>
 
-        <div class="col-lg-5">
+        <!-- Sisi Kanan: Profil & Statistik -->
+        <div class="col-lg-5 d-flex flex-column gap-4">
 
+          <!-- Card Profil Utama -->
           <div class="card-custom profile-card">
 
             <img
@@ -58,7 +62,7 @@
               class="profile-photo"
             />
 
-            <div class="profile-info">
+            <div class="profile-info w-100">
 
               <h4>Maya Elvira Sutanto</h4>
 
@@ -83,8 +87,8 @@
                   Web Development
                 </li>
 
-                <li>
-                  <span class="badge bg-primary px-3 py-2">
+                <li class="mt-3 badge-wrapper">
+                  <span class="badge bg-primary px-3 py-2 rounded-pill">
                     Open To Work
                   </span>
                 </li>
@@ -95,34 +99,36 @@
 
           </div>
 
-          <div class="card-custom mt-4">
+          <!-- Card Tujuan Karier & Angka Statistik -->
+          <div class="card-custom p-4 flex-grow-1 d-flex flex-column justify-content-center">
 
-            <h3 class="h5 mb-3">
+            <h3 class="h5 mb-3 text-center text-md-start">
               <i class="bi bi-compass-fill me-2 text-primary"></i>
               Tujuan Karier
             </h3>
 
-            <p class="text-secondary mb-4">
+            <p class="text-secondary mb-4 text-center text-md-start text-justify">
               Menjadi Front-End Web Developer profesional yang mampu
               menciptakan website modern, responsif, dan memberikan
               pengalaman pengguna terbaik.
             </p>
 
-            <div class="row text-center">
+            <!-- Statistik Grid Mini -->
+            <div class="row g-2 text-center mt-auto">
 
-              <div class="col">
-                <h5 class="fw-bold text-primary">10+</h5>
-                <small>Project</small>
+              <div class="col-4">
+                <h5 class="fw-bold text-primary mb-1 fs-4 fs-md-3">10+</h5>
+                <small class="text-muted d-block text-truncate">Project</small>
               </div>
 
-              <div class="col">
-                <h5 class="fw-bold text-primary">6+</h5>
-                <small>Tech Stack</small>
+              <div class="col-4">
+                <h5 class="fw-bold text-primary mb-1 fs-4 fs-md-3">6+</h5>
+                <small class="text-muted d-block text-truncate">Tech Stack</small>
               </div>
 
-              <div class="col">
-                <h5 class="fw-bold text-primary">2026</h5>
-                <small>Graduate</small>
+              <div class="col-4">
+                <h5 class="fw-bold text-primary mb-1 fs-4 fs-md-3">2026</h5>
+                <small class="text-muted d-block text-truncate">Graduate</small>
               </div>
 
             </div>
@@ -138,7 +144,7 @@
 </template>
 
 <script setup>
-// Kosong, langsung dibaca lewat root '/' template html
+// Presentational component
 </script>
 
 <style scoped>
@@ -148,15 +154,22 @@
 
 /* TITLE */
 .section-title {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #1e293b;
+}
+
+@media (min-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
 }
 
 .section-subtitle {
   color: #64748b;
   max-width: 600px;
   margin: auto;
+  font-size: 0.95rem;
 }
 
 /* CARD */
@@ -164,33 +177,43 @@
   background: white;
   border-radius: 24px;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  transition: 0.3s;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card-custom:hover {
   transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.07);
 }
 
-/* PROFILE */
+/* PROFILE CARD RESPONSIVE */
 .profile-card {
-  padding: 28px;
+  padding: 24px;
   display: flex;
+  flex-direction: column; /* Default di HP: Menurun */
   align-items: center;
-  gap: 24px;
+  text-align: center;
+  gap: 20px;
+}
+
+@media (min-width: 576px) {
+  .profile-card {
+    flex-direction: row; /* Layar tablet/laptop: Menyamping */
+    text-align: left;
+    padding: 28px;
+    gap: 24px;
+  }
 }
 
 .profile-photo {
-  width: 110px;
-  height: 110px;
+  width: 105px;
+  height: 105px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  background:
-  linear-gradient(white, white) padding-box,
-   linear-gradient(135deg, #456dc5, #9eddf8) border-box;
-   box-shadow:
-    8px 8px 25px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, #456dc5, #9eddf8) border-box;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.2);
   border: 4px solid transparent;
 }
 
@@ -198,45 +221,66 @@
   font-weight: 700;
   margin-bottom: 4px;
   color: #1e293b;
+  font-size: 1.25rem;
 }
 
 .job-title {
   color: #2563eb;
   font-weight: 600;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
 }
 
 .profile-list {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: inline-block; /* Mengunci list agar ikon & teks tidak pecah alignment-nya */
+  text-align: left;
 }
 
 .profile-list li {
-  margin-bottom: 10px;
+  margin-bottom: 8px;
   color: #475569;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
 }
 
 .profile-list i {
   color: #2563eb;
   margin-right: 10px;
+  font-size: 1rem;
 }
 
-/* MOTIVATION */
+.badge-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 576px) {
+  .badge-wrapper {
+    justify-content: flex-start;
+  }
+}
+
+/* MOTIVATION BOX */
 .motivation-box {
   background: #f8fafc;
   border-left: 5px solid #2563eb;
-  padding: 20px;
+  padding: 16px;
   border-radius: 16px;
+  font-size: 0.95rem;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .profile-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .profile-list {
+/* UTILITY HELPERS */
+.text-justify {
+  text-align: justify;
+}
+
+@media (max-width: 576px) {
+  /* Hilangkan perataan justify di layar super kecil jika baris teks terlalu pendek */
+  .text-justify {
     text-align: center;
   }
 }

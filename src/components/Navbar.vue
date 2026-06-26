@@ -1,79 +1,72 @@
-<template>
-  <nav :class="['navbar navbar-expand-lg fixed-top navbar-custom', { 'scrolled': isScrolled }]">
-    <div class="container">
-      <router-link to="/" class="navbar-brand fw-bold text-dark d-flex align-items-center" @click="closeCollapse">
-        <span class="fs-4 text-primary me-2"><i class="bi bi-code-slash"></i></span>
-        <span class="d-none d-sm-inline">Maya Elvira</span>
-      </router-link>
-      
-      <button 
-        class="navbar-toggler border-0 shadow-none" 
-        type="button" 
-        data-bs-toggle="collapse" 
-        data-bs-target="#navbarNav" 
-        aria-controls="navbarNav" 
-        aria-expanded="false" 
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0 gap-1 mt-3 mt-lg-0">
-          <li class="nav-item" v-for="item in menuItems" :key="item.path">
-            <router-link 
-              :to="item.path"
-              class="nav-link"
-              @click="closeCollapse"
-            >
-              {{ item.name }}
-            </router-link>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-</template>
+<style scoped>
+/* ==========================================================================
+   1. STYLING NAVBAR UTAMA (DESKTOP & GLOBAL)
+   ========================================================================== */
+.navbar-custom {
+  background-color: rgba(255, 255, 255, 0.8); /* Transparansi dasar bar navigasi */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
 
-<script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+/* Mengubah style saat di-scroll ke bawah */
+.navbar-custom.scrolled {
+  background-color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
 
-const isScrolled = ref(false)
+/* Styling Link Menu */
+.nav-link {
+  font-weight: 500;
+  color: #475569;
+  padding: 0.5rem 1rem !important;
+  border-radius: 10px;
+  transition: all 0.25s ease;
+  display: inline-block;
+  width: 100%; /* Membantu di HP agar area sentuh tombol penuh */
+}
 
-const menuItems = [
-  { path: '/', name: 'Home' },
-  { path: '/about', name: 'About' },
-  { path: '/skills', name: 'Skills' },
-  { path: '/projects', name: 'Projects' },
-  { path: '/contact', name: 'Contact' }
-]
+/* Hover & Active Link Mode (Desktop Style Bawaan) */
+.nav-link:hover {
+  color: #2563eb;
+}
 
-const closeCollapse = () => {
-  const navbarCollapse = document.getElementById('navbarNav')
-  if (navbarCollapse && navbarCollapse.classList.contains('show')) {
-    const bsCollapse = window.bootstrap?.Collapse?.getInstance(navbarCollapse)
-    if (bsCollapse) {
-      bsCollapse.hide()
-    } else {
-      navbarCollapse.classList.remove('show')
-    }
+.router-link-active {
+  color: #2563eb !important;
+  font-weight: 600;
+  background-color: #eff6ff; /* Background biru muda transparan */
+}
+
+/* ==========================================================================
+   2. FIX MOBILE & TABLET (RESPONSIVE BLUR GLASSMORPHISM)
+   ========================================================================== */
+@media (max-width: 991.98px) {
+  .navbar-collapse {
+    /* Latar belakang putih tipis transparan */
+    background-color: rgba(255, 255, 255, 0.88); 
+    
+    /* EFEK BLUR KACA - Menghancurkan tembus pandang bocor ke foto profil */
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    
+    /* Layout Kotak Menu Dropdown */
+    border-radius: 20px;
+    padding: 1.25rem;
+    margin-top: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Border tipis ala kaca */
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08); /* Bayangan pop-out */
+  }
+
+  /* Reset margin list di dalam mobile */
+  .navbar-nav {
+    margin-top: 0 !important; /* Hapus mt-3 bawaan html biar ga terlalu turun */
+    gap: 6px !important; /* Kasih jarak antar menu biar jempol nyaman */
+  }
+
+  /* Bikin teks menu di HP rata tengah agar simetris dengan fotomu */
+  .nav-link {
+    text-align: center;
+    padding: 0.65rem 1rem !important; /* Padding lebih tebal biar gampang dipencet */
   }
 }
-
-const handleScroll = () => {
-  isScrolled.value = window.scrollY > 20
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
-  handleScroll()
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll)
-})
-</script>
-
-<style scoped>
-
 </style>

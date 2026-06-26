@@ -7,31 +7,22 @@
         <p class="section-subtitle">Teknologi dan alat pemrograman yang saya pelajari dan gunakan untuk membangun proyek-proyek website.</p>
       </div>
 
+      <!-- Grid Daftar Skills Terang & Berwarna -->
       <div class="row g-4 justify-content-center">
         <div 
           v-for="skill in skills" 
           :key="skill.name" 
-          class="col-12 col-sm-6 col-lg-4 col-xl-3"
+          class="col-6 col-md-4 col-lg-3"
         >
-          <div class="card-custom skill-card hover-card glass-card">
-            <!-- Icon Wrapper -->
-            <div class="skill-icon-wrapper">
+          <!-- Menggunakan variabel CSS '--glow-color' untuk bayangan pastel pas di-hover -->
+          <div class="skill-light-card text-center" :style="{ '--glow-color': skill.color }">
+            <!-- Icon Box dengan warna khas masing-masing -->
+            <div class="icon-box mb-3" :style="{ color: skill.color, backgroundColor: skill.color + '12' }">
               <i :class="skill.icon"></i>
             </div>
-            
-            <!-- Skill Details -->
-            <div class="skill-info">
-              <div class="skill-title text-dark">
-                <span>{{ skill.name }}</span>
-                <span class="text-accent small">{{ skill.level }}%</span>
-              </div>
-              <div class="skill-progress-bg">
-                <div 
-                  class="skill-progress-bar" 
-                  :style="{ width: skill.level + '%' }"
-                ></div>
-              </div>
-            </div>
+            <!-- Nama Skill & Level -->
+            <h5 class="skill-name text-dark mb-1 fw-bold">{{ skill.name }}</h5>
+            <span class="skill-level-text small text-secondary text-uppercase tracking-wider">{{ skill.level }}</span>
           </div>
         </div>
       </div>
@@ -42,37 +33,41 @@
 <script setup>
 import { ref } from 'vue'
 
+// Data skills asli kamu dengan kode warna pastel/neon khas masing-masing logonya
 const skills = ref([
-  { name: 'HTML', icon: 'bi bi-filetype-html', level: 80 },
-  { name: 'CSS', icon: 'bi bi-filetype-css', level: 80 },
-  { name: 'Python', icon: 'bi bi-code-slash', level: 70 },
-  { name: 'Bootstrap', icon: 'bi bi-bootstrap-fill', level: 35 },
-  { name: 'JavaScript', icon: 'bi bi-braces-asterisk', level: 40 },
-  { name: 'PHP', icon: 'bi bi-terminal-fill', level: 70 },
-  { name: 'Laravel', icon: 'bi bi-gem', level: 35 },
-  { name: 'MySQL', icon: 'bi bi-database-fill', level: 65 }
+  { name: 'HTML', icon: 'bi bi-filetype-html', level: 'Advanced', color: '#e34c26' },
+  { name: 'CSS', icon: 'bi bi-filetype-css', level: 'Advanced', color: '#264de4' },
+  { name: 'Python', icon: 'bi bi-code-slash', level: 'Intermediate', color: '#b89200' }, // Dipasasin biar kontras di background putih
+  { name: 'Bootstrap', icon: 'bi bi-bootstrap-fill', level: 'Beginner', color: '#7952b3' },
+  { name: 'JavaScript', icon: 'bi bi-braces-asterisk', level: 'Intermediate', color: '#ccb200' }, // Dipasasin biar kelihatan terang
+  { name: 'PHP', icon: 'bi bi-terminal-fill', level: 'Intermediate', color: '#525694' },
+  { name: 'Laravel', icon: 'bi bi-gem', level: 'Beginner', color: '#ff2d20' },
+  { name: 'MySQL', icon: 'bi bi-database-fill', level: 'Intermediate', color: '#006175' }
 ])
 </script>
 
 <style scoped>
+/* Kembali ke latar belakang terang bawaan asli portofoliomu */
 .skills-section {
-  background: #f8fafc;
+  background: #f8fafc; 
+  position: relative;
 }
 
-/* HEADER */
+/* HEADER STYLE */
 .section-title {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #1e293b;
+  letter-spacing: -0.02em;
   position: relative;
   display: inline-block;
 }
 
 .section-title::after {
   content: "";
-  width: 70px;
+  width: 50px;
   height: 4px;
-  background: #2563eb;
+  background: linear-gradient(90deg, #3b82f6, #2563eb);
   position: absolute;
   left: 50%;
   bottom: -12px;
@@ -81,91 +76,81 @@ const skills = ref([
 }
 
 .section-subtitle {
-  max-width: 650px;
+  max-width: 600px;
   margin: 1.5rem auto 0;
-  color: #64748b;
   font-size: 1.05rem;
+  color: #64748b;
 }
 
-/* CARD */
-.skill-card {
+/* LIGHT CARD DESIGN (Aesthetic Putih Bersih) */
+.skill-light-card {
   background: #ffffff;
-  border-radius: 24px;
-  padding: 1.5rem;
   border: 1px solid #e2e8f0;
-  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.05);
-  transition: all 0.35s ease;
+  border-radius: 24px;
+  padding: 2rem 1.5rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
   height: 100%;
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.02);
 }
 
-.skill-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.12);
+/* EFEK HOVER GLOW PASTEL HALUS */
+.skill-light-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--glow-color);
+  /* Memberikan efek bayangan menyala tipis transparan sesuai warna tech-nya */
+  box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.04),
+              0 10px 25px var(--glow-color) 30; /* Angka 30 di ujung untuk transparansi kelembutan */
 }
 
-/* ICON */
-.skill-icon-wrapper {
-  width: 70px;
-  height: 70px;
-  background: rgba(37, 99, 235, 0.08);
-  border-radius: 18px;
-  display: flex;
+/* ICON BOX */
+.icon-box {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 18px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
+  transition: all 0.3s ease;
 }
 
-.skill-icon-wrapper i {
-  font-size: 2rem;
-  color: #2563eb;
+.skill-light-card:hover .icon-box {
+  transform: scale(1.1) rotate(4deg);
 }
 
-/* TITLE */
-.skill-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-  font-weight: 600;
-  font-size: 1.05rem;
+.icon-box i {
+  font-size: 2.2rem;
 }
 
-.text-accent {
-  background: #eff6ff;
-  color: #2563eb;
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
+/* TEXT TYPOGRAPHY */
+.skill-name {
+  font-size: 1.15rem;
+  letter-spacing: -0.01em;
+  color: #0f172a;
 }
 
-/* PROGRESS */
-.skill-progress-bg {
-  height: 10px;
-  background: #e2e8f0;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.skill-progress-bar {
-  height: 100%;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    #3b82f6,
-    #2563eb
-  );
-  transition: width 1s ease;
+.skill-level-text {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.7;
 }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
+@media (max-width: 576px) {
   .section-title {
     font-size: 2rem;
   }
-
-  .skill-card {
-    padding: 1.25rem;
+  .skill-light-card {
+    padding: 1.5rem 1rem;
+    border-radius: 20px;
+  }
+  .icon-box {
+    width: 55px;
+    height: 55px;
+  }
+  .icon-box i {
+    font-size: 1.8rem;
   }
 }
 </style>

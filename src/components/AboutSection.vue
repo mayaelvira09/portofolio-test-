@@ -2,7 +2,6 @@
   <section id="about" class="about-section py-5" data-aos="fade-left">
     <div class="container">
 
-      <!-- Judul -->
       <div class="text-center mb-5">
         <h2 class="section-title">Tentang Saya</h2>
         <p class="section-subtitle">
@@ -12,7 +11,6 @@
 
       <div class="row g-4">
 
-        <!-- KIRI -->
         <div class="col-lg-7">
           <div class="card-custom p-4 h-100">
 
@@ -50,13 +48,12 @@
           </div>
         </div>
 
-        <!-- KANAN -->
         <div class="col-lg-5">
 
           <div class="card-custom profile-card">
 
             <img
-              src="../assets/profile.jpeg"
+              src="/profile.jpeg"
               alt="Maya Elvira Sutanto"
               class="profile-photo"
             />
@@ -98,7 +95,6 @@
 
           </div>
 
-          <!-- Career -->
           <div class="card-custom mt-4">
 
             <h3 class="h5 mb-3">
@@ -142,6 +138,7 @@
 </template>
 
 <script setup>
+// Kosong, langsung dibaca lewat root '/' template html
 </script>
 
 <style scoped>
@@ -188,14 +185,13 @@
   height: 110px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid #2563eb;
   flex-shrink: 0;
-  border: 4px solid transparent;
   background:
   linear-gradient(white, white) padding-box,
    linear-gradient(135deg, #456dc5, #9eddf8) border-box;
    box-shadow:
     8px 8px 25px rgba(37, 99, 235, 0.25);
+  border: 4px solid transparent;
 }
 
 .profile-info h4 {
@@ -236,15 +232,12 @@
 
 /* MOBILE */
 @media (max-width: 768px) {
-
   .profile-card {
     flex-direction: column;
     text-align: center;
   }
-
   .profile-list {
     text-align: center;
   }
-
 }
 </style>

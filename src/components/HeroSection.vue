@@ -6,7 +6,6 @@
     <div class="container">
       <div class="row align-items-center py-5">
 
-        <!-- ngatur transisinya-->
         <div
           class="col-lg-6 order-2 order-lg-1"
           data-aos="fade-right"
@@ -98,7 +97,6 @@
           </div>
         </div>
 
-        <!-- Profile -->
         <div
           class="col-lg-6 order-1 order-lg-2 mb-5 mb-lg-0 text-center"
           data-aos="fade-left"
@@ -109,21 +107,10 @@
 
             <div class="profile-image-wrapper">
               <img
-                v-if="!imageError"
-                :src="imageSrc"
+                src="/profile.jpeg"
                 alt="Maya Elvira Sutanto"
                 class="profile-img-element"
-                @error="handleImageError"
               />
-
-              <svg
-                v-else
-                class="profile-placeholder-svg"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 200 200"
-              >
-                <!-- SVG tetap sama, tidak perlu diubah -->
-              </svg>
             </div>
           </div>
         </div>
@@ -134,15 +121,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import profile from '../assets/profile.jpeg'
-
-const imageSrc = profile
-const imageError = ref(false)
-
-const handleImageError = () => {
-  imageError.value = true
-}
+// Kosong karena gambar dipanggil langsung dari folder public via template html
 </script>
 
 <style scoped>
@@ -154,12 +133,26 @@ const handleImageError = () => {
   );
 }
 
+.profile-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-image-wrapper {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
 .profile-img-element {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  transition: var(--transition-smooth);
+  transition: transform 0.5s ease;
 }
 
 .profile-image-wrapper:hover .profile-img-element {
